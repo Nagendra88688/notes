@@ -1,0 +1,20 @@
+* Good Practices for React Optimization =======
+      ✅ Use React.memo for functional components to prevent unnecessary re-renders.
+      ✅ Use useCallback & useMemo for expensive functions and computed values.
+      ✅ Provide a stable key prop when rendering lists (avoid using array index if possible).
+      ✅ Split large components into smaller reusable components.
+      ✅ Use React.lazy + Suspense for route-based or component-level lazy loading.
+      ✅ Split vendor libraries (e.g., charts, editors) into separate bundles using Webpack or Vite.
+      ✅ Load non-critical components only when needed (modals, dropdowns).
+      ✅ Use uncontrolled components for forms if you don’t need to track every keystroke.
+      ✅ Use windowing/virtualization libraries (React Window, React Virtualized) for large lists.
+      ✅ Cache API responses using React Query, SWR, or RTK Query.
+      ✅ Debounce/throttle expensive API calls (like search).
+      ✅ Prefer Redux Toolkit / Zustand / Jotai for scalable global state.
+
+* New features in latest version of React (19) ===========
+  * Refs as props directly (i.e. no more forwardRef in many common cases) 
+  * use() API: Allows reading a Promise or resource directly inside render (instead of via side effects), with built-in support for Suspense, etc. 
+               Simplifies async data fetching in some rendering scenarios.
+
+                                                        
