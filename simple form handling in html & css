@@ -1,0 +1,51 @@
+IN HTML FILE =======
+
+  <body>
+    <h2>User Registration Form</h2>
+  
+    <form id="userForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <br><br>
+  
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+  
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="1" required>
+      <br><br>
+  
+      <button type="submit">Submit</button>
+    </form>
+  
+    <p id="output"></p>
+  
+    <script src="script.js"></script>
+  </body>
+
+
+
+IN script.js FILE =========
+
+    // Grab form and output element
+    const form = document.getElementById("userForm");
+    const output = document.getElementById("output");
+    
+    // Listen for form submission
+    form.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent page reload
+    
+      // Get values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const age = document.getElementById("age").value;
+    
+      // Show output
+      output.textContent = `Hello ${name}, your email is ${email} and you are ${age} years old.`;
+    
+      // (Optional) Clear form
+      form.reset();
+    });
+
+
