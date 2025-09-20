@@ -17,4 +17,38 @@
   * use() API: Allows reading a Promise or resource directly inside render (instead of via side effects), with built-in support for Suspense, etc. 
                Simplifies async data fetching in some rendering scenarios.
 
+
+* LAZY LOADING =================
+      - Lazy loading is a frontend optimization where resources (like images, components, or routes) are loaded only when 
+      they are needed, instead of all initially loading at once. This improves performance and reduces bandwidth usage.
+
+      -     import React, { Suspense, lazy } from "react";
+
+            const Profile = lazy(() => import("./Profile")); // Lazy load component
+            
+            function App() {
+              return (
+                <div>
+                  <h1>Dashboard</h1>
+                  <Suspense fallback={<p>Loading profile...</p>}>
+                    <Profile />  {/* Loaded only when needed */}
+                  </Suspense>
+                </div>
+              );
+            }
+
+      - Lazy loading does the Code splitting, which is a performance optimization technique where your application’s JavaScript bundle is split
+        into smaller chunks instead of one big file.
+
+
+* React Virtualized============
+       - React Virtualized is a popular library for efficiently rendering large lists, tables, and grids in React.
+      
+      👉 Instead of rendering thousands of DOM nodes at once (which slows down the app), React Virtualized only renders the items that are visible
+          in the viewport plus a small buffer.
+      👉 As you scroll, it reuses DOM nodes and renders new items dynamically.
+      
+      This technique is called windowing or virtualization.
+
+
                                                         
