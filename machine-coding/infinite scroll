@@ -1,0 +1,25 @@
+We are creating a list of 50 elements initially, it will auto-add 50 more elements when user scrolls to the end of the list, causing infinite scroll.
+
+export default function App() {
+  const [count, setCount] = useState(50);  // intially 50 items
+  let list = []; 
+
+  const handleScroll = () => {
+    if ( window.scrollY + window.innerHeight >= window.document.body.offsetHeight ) { // this is main concept where innerHeight is viewport height, and body.offsetHeight is whole height that the body is taking.
+      setCount(count + 50);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [count]);
+
+  for (let i = 0; i < count; i++) {
+    list.push(<div key={i}>{i + 1}</div>);
+  }
+
+  return <div>{list}</div>;
+}
