@@ -51,4 +51,26 @@
       This technique is called windowing or virtualization.
 
 
+* Ref ================
+  - A ref is like a pointer for a value, or a DOM element.
+  - It gives a way to directly access and interact with something React manages (like an <input> or a value that should persist across renders).
+  - Unlike state, changing a ref does not trigger a re-render, and refs persist during re-renders. So refs can be used to store render counts.
+  - const myRef = useRef(initialValue);   => useRef(initialValue) returns an object { current: initialValue } 
+  - The ".current" property can be mutated freely.
+  - Usage(to focus input) :
+          const inputRef = useRef(null);  // Declaration
+
+          <>
+            <input ref={inputRef} type="text" />                  // now, this inputRef will contain the actual <input> DOM node.
+            <button onClick={()=>inputRef.current.focus()}>Focus Input</button>   
+          </>
+
+ * React.StrictMode ===============
+   - It’s a wrapper component that helps you find potential problems in your React code.
+   - Think of it like a developer tool (it doesn’t affect production).
+   - Warns if you use outdated lifecycle methods
+   - In React 18+, it intentionally runs certain functions twice (like useEffect cleanup/setup, component constructors, and render) 
+     to help you spot side-effects that shouldn’t exist.
+   - Development-only tool for catching bugs early.
+
                                                         
