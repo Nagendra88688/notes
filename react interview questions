@@ -73,4 +73,19 @@
      to help you spot side-effects that shouldn’t exist.
    - Development-only tool for catching bugs early.
 
+* useEffect v/s useLayoutEffect ===================
+    🔸 useEffect
+            * Runs asynchronously after paint (after the browser updates the screen).
+            * Non-blocking → the UI is updated first, then the effect runs.
+            * Best for: side effects that don’t affect layout/paint.
+
+    🔸 useLayoutEffect
+            * Runs synchronously after DOM updates but before paint.
+            * Blocks painting until it finishes → can cause flicker if misused.
+            * Best for: measuring DOM, synchronously re-rendering, or adjusting layout before the user sees it.
+            * example, useLayoutEffect(() => {
+                           setWidth(boxRef.current.getBoundingClientRect().width);
+                        }, []);
                                                         
+* How to test a React component  =============
+ //
