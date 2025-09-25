@@ -89,3 +89,28 @@
                                                         
 * How to test a React component  =============
  //
+
+
+* HOW THE INTERNET WORKS ============
+        - You type a URL in the browser
+        - The browser checks cache (or your OS / ISP cache) to see if it already knows the IP address of the server.
+        - If not, it queries a DNS server to translate the domain name (www.google.com) into an IP address (e.g., 142.250.182.4).
+        - The browser now knows the IP address and uses the TCP/IP protocol to connect.
+        - The browser sends an HTTP request (e.g., GET /) to the server over the TCP connection. (TCP is a Protocol for reliable data transfer)
+        - This request travels through multiple routers, ISPs, and undersea cables until it reaches the destination server.
+        - The server receives the request. It may query databases, run backend logic, and then prepare a response (HTML, JSON, etc.).
+        - The server sends back an HTTP response (e.g., HTML for a webpage) to the browser.
+        - The response is rendered on Browser.
+
+* How a Webpage Loads in the Browser =====
+      - The browser reads HTML line by line and builds the DOM Tree.
+      - CSS are downloaded and parsed into the CSSOM.
+      - Browser combines DOM + CSSOM → creates the Render Tree, which determines what gets painted on screen.
+      - Browser paints pixels (colors, text, images) and composites layers → final UI is displayed.
+      - Browser downloads and executes JS files. JS can modify DOM (→ causes reflows & repaints).
+
+* CDN : A CDN is a network of globally distributed servers that cache and deliver content to users from the nearest location. 
+        This reduces latency, speeds up page loads, decreases server load, and improves reliability. 
+        For frontend, CDNs are commonly used to serve static assets like JavaScript, CSS, and images.
+        Some common CDN providers are: Akamai, Cloudflare, & Netlify Edge.
+
