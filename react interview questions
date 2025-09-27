@@ -87,8 +87,7 @@
                            setWidth(boxRef.current.getBoundingClientRect().width);
                         }, []);
                                                         
-* How to test a React component  =============
- //
+
 
 
 * HOW THE INTERNET WORKS ============
@@ -113,4 +112,10 @@
         This reduces latency, speeds up page loads, decreases server load, and improves reliability. 
         For frontend, CDNs are commonly used to serve static assets like JavaScript, CSS, and images.
         Some common CDN providers are: Akamai, Cloudflare, & Netlify Edge.
+
+* VITE =============================
+  - It is a next-generation frontend build tool designed to provide faster development and optimized builds compared to traditional bundlers like Webpack.
+  - Traditional bundlers (like Webpack) rebuild and rebundle your entire app when a file changes → slow dev server for large projects. Vite solves this by using native ES modules in development.
+  - When you start the dev server, Vite doesn’t bundle everything. It only serves files on demand — if you open App.jsx, only that file and its dependencies are compiled.
+  - Uses esbuild (written in Go) for lightning-fast compilation.
 
