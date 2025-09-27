@@ -1,0 +1,6 @@
+* What are the Challenges you faced in your work projects ? ======================
+  - Our React dashboard started lagging whenever large datasets (10k+ rows) were rendered in tables. 
+    I optimized it by implementing lazy loading, memoized pure components with React.memo, and used pagination instead of loading all rows at once.
+  - Moved complex state management into Redux.
+  - In a search feature, every keystroke was triggering an API call, putting unnecessary load on the backend and slowing down the UI. Fixed it using debouncing.
+  
