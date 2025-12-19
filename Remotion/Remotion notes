@@ -5,3 +5,17 @@
   - `height` in pixels.
   - `durationInFrames`: the total number of frames in the video.
   - `fps`: framerate of the video.
+
+* Composition: It is the combination of a React component and video metadata.
+
+* Using the interpolate() function to create a "fade in text animation":
+    import { interpolate } from "remotion";
+
+    const opacity = interpolate(frame, [0, 60], [0, 1], {
+      /*                        ^^^^^   ^^^^^    ^^^^
+      Variable to interpolate ----|       |       |
+      Input range ------------------------|       |
+      Output range -------------------------------|  */
+      extrapolateRight: "clamp",
+    });
+
