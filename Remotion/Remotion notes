@@ -1,0 +1,7 @@
+* npx create-video@latest
+
+* A video has 4 properties:
+  - `width` in pixels.
+  - `height` in pixels.
+  - `durationInFrames`: the total number of frames in the video.
+  - `fps`: framerate of the video.
