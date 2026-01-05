@@ -1,0 +1,17 @@
+* HLS (HTTP Live Streaming) is a video streaming protocol developed by Apple that allows video to be delivered 
+  smoothly and adaptively over the internet.
+
+* HLS breaks a video into small chunks (segments) and streams them over standard HTTP, adjusting video quality 
+  in real time based on the user’s internet speed.
+
+* How HLS works:
+    1. A video is encoded at multiple quality levels (e.g., 240p, 480p, 720p).
+    2. Each quality is split into short segments (usually 2–10 seconds).
+    3. A playlist file (.m3u8) tells the player which segments to load.
+    4. The video player automatically switches quality depending on bandwidth and device performance.
+
+* Why HLS is used
+  ✅ Adaptive streaming – avoids buffering on slow networks
+  ✅ Works on most devices (web, mobile, smart TVs)
+  ✅ Firewall/CDN friendly (uses HTTP/HTTPS)
+  ✅ Scales well for large platforms
