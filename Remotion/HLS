@@ -26,3 +26,35 @@
        ├── segment_001.ts
        ├── segment_002.ts
        └── ...
+
+
+
+* HLS Player Component ===============
+
+        import { useEffect, useRef } from "react";
+        import Hls from "hls.js";   // importing hls
+        
+        const HLSPlayer = ({ src }: { src: string }) => {
+          const videoRef = useRef<HTMLVideoElement>(null);
+        
+          useEffect(() => {
+            const video = videoRef.current;
+            if (!video) return;
+        
+            // Safari natively supports HLS (both created by Apple)
+            if (video.canPlayType("application/vnd.apple.mpegurl")) {
+              video.src = src;
+            }
+            // Chrome / Firefox
+            else if (Hls.isSupported()) {
+              const hls = new Hls();
+              hls.loadSource(src);    // loads & prepares data
+              hls.attachMedia(video); // connects to <video>
+        
+              return () => hls.destroy();
+            }
+          }, [src]);
+        
+          return <video ref={videoRef} controls style={{ width: "100%" }} />;
+        };
+
