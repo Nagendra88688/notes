@@ -1,3 +1,6 @@
+* Remotion is a React-based video generation library.
+  👉 It lets you create videos using React components instead of traditional video-editing tools.
+
 * npx create-video@latest
 
 * A video has 4 properties:
@@ -7,8 +10,25 @@
   - `fps`: framerate of the video.
 
 * Composition: It is the combination of a React component and video metadata.
+        import { Composition } from "remotion";
+        import { MyVideo } from "./MyVideo";
+        
+        export const Root = () => {
+          return (
+            <Composition
+              id="MyVideo"
+              component={MyVideo}
+              durationInFrames={300}
+              fps={30}
+              width={1920}
+              height={1080}
+            />
+          );
+        };
+
 
 * Using the interpolate() function to create a "fade in text animation":
+
     import { interpolate } from "remotion";
 
     const opacity = interpolate(frame, [0, 60], [0, 1], {
@@ -18,4 +38,29 @@
       Output range -------------------------------|  */
       extrapolateRight: "clamp",
     });
+
+
+
+* Frame-based animation (useCurrentFrame)
+
+        import { useCurrentFrame } from "remotion";
+        
+        export const MyVideo = () => {
+          const frame = useCurrentFrame();
+        
+          return (
+            <div style={{ opacity: frame / 30 }}>
+              Fade In Text
+            </div>
+          );
+        };
+
+* Development preview : "npx remotion preview"
+
+* Render video (MP4) :  "npx remotion render src/index.ts MyVideo out.mp4"
+
+* Render HLS (used in production apps) : "npx remotion render src/index.ts MyVideo out.m3u8"
+
+
+
 
