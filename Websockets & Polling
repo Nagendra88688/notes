@@ -1,0 +1,78 @@
+======= Web sockets =========
+* A WebSocket is a persistent, two-way connection between the browser and the server.
+  Once connected, both client and server can send messages to each other at any time—no repeated requests needed.
+
+* Example WebSocket in React:
+    import { useEffect, useRef } from "react";
+    
+    const WebSocketComponent = () => {
+      const socketRef = useRef(null);
+    
+      useEffect(() => {
+        const socket = new WebSocket("wss://ws.postman-echo.com/raw");   // this url echoes back the same payload msg
+        socketRef.current = socket;              // storing in ref to persist across re-renders
+    
+        socket.onopen = () => {
+          console.log("Socket connected...");
+        };
+    
+        socket.onmessage = (event) => {
+          console.log(event?.data);        // this will log the same payload msg
+        };
+    
+        return () => {
+          socket.close();
+        };
+      }, []);
+    
+      const sendMessage = () => {
+        socketRef.current?.send("Hello WebSocket! Nagi here");
+      };
+    
+      return <button onClick={sendMessage}>Send</button>;
+    };
+    
+    export default WebSocketComponent;
+
+
+* Web socket is used for real-time updates, like chat apps, live dashboard, stock prices UI.
+
+
+
+======== Polling ===============
+* Polling is a technique where the client repeatedly requests the server at fixed intervals to check for updates, 
+  commonly used for tracking long-running backend processes when real-time connections are not required.
+
+
+* Simple polling example in React
+
+          import { useEffect, useState } from "react";
+          
+          const PollingExample = () => {
+            const [status, setStatus] = useState("pending");
+          
+            useEffect(() => {
+              const intervalId = setInterval(async () => {
+                const res = await fetch("/api/status");
+                const data = await res.json();
+          
+                setStatus(data.status);
+          
+                if (data.status === "completed") {
+                  clearInterval(intervalId);
+                }
+              }, 3000); // every 3 seconds
+          
+              return () => clearInterval(intervalId);
+            }, []);
+          
+            return <div>Status: {status}</div>;
+          };
+
+
+* Problems with polling ❌
+  - Wastes network calls
+  - Adds server load
+  - Not real-time
+  - Bad for high-frequency updates
+  - That’s why polling is not used for chat apps.
