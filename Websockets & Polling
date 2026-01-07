@@ -76,3 +76,51 @@
   - Not real-time
   - Bad for high-frequency updates
   - That’s why polling is not used for chat apps.
+
+
+============== Server-Sent Events ===================
+* Server-Sent Events provide a persistent HTTP connection where the server can push real-time updates to the client
+  in a one-way stream, making them ideal for notifications and progress updates.
+
+🔹 Server pushes updates to the client
+🔹 Client cannot send messages back on the same connection
+
+
+* Basic SSE server example:
+    In Node.js file->
+        app.get("/events", (req, res) => {
+          res.setHeader("Content-Type", "text/event-stream");
+          res.setHeader("Cache-Control", "no-cache");
+          res.setHeader("Connection", "keep-alive");
+        
+          const interval = setInterval(() => {
+            res.write(`data: ${JSON.stringify({ time: Date.now() })}\n\n`);
+          }, 2000);
+        
+          req.on("close", () => {
+            clearInterval(interval);
+          });
+        });
+
+  Client in React->
+        const SSEComponent = () => {
+          useEffect(() => {
+            const eventSource = new EventSource("/events");
+        
+            eventSource.onmessage = (event) => {
+              console.log("Received:", event.data);
+            };
+      
+            return () => {
+              eventSource.close();
+            };
+          }, []);
+        
+          return <div>Listening to server events...</div>;
+        };
+
+
+* Used in video render progress, live notifications, where client don't need to request.
+
+        
+
