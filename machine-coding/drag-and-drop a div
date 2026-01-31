@@ -1,4 +1,75 @@
 * Drag a div in a container and drop it to another div container.
 
 * Concept: 
-  -
+  - The draggable boxes div will give "draggable" and "onDragStart" properties.
+  - Through the "onDragStart", "e.dataTransfer.setData" function sets the dragging string.
+  - The droppable section div will give "onDragOver" and "onDrop" properties.
+  - "onDragOver" just prevents default, and "onDrop" gets the dropping data using "e.dataTransfer.getData".
+  - The dragging data is handled through simple state logic.
+
+* Code Sandbox : 
+  https://codesandbox.io/p/sandbox/drag-and-drop-boxes-forked-flrwwj?file=%2Fsrc%2FApp.js%3A12%2C26
+
+
+* CODE:
+
+import "./styles.css";
+import { useState } from "react";
+
+export default function App() {
+  const [initials, setInitials] = useState(['box1', 'box2']); // initial section with 2 boxes
+  const [items, setItems] = useState([]); // second section where box will be dropped
+
+  const onDragStart = (e, textVal) => {
+    e.dataTransfer.setData("text", textVal);
+  };
+
+  const onDrop = (e) => {
+    e.preventDefault();
+
+    const droppedString = e.dataTransfer.getData("text");
+    setItems((prev) => [...prev, droppedString]);
+
+    const updatedInitials = initials.filter(i=>i!==droppedString) // removing item from initial section
+    setInitials([...updatedInitials]);
+  };
+
+  const onDragOver = (e) => { // REQUIRED
+    e.preventDefault(); 
+  };
+
+  return (
+    <div style={{ display: "flex", gap: "10px" }}>
+      
+      {/* Drag source */}
+      <div style={{ height: 200, width: 200, border: "1px solid black"}} >
+        {initials.map((item, index) => (
+          <div
+            draggable
+            onDragStart={e=>onDragStart(e,item)}
+            key={index}
+            style={{ height: 50, width: 50, background: "green", marginBottom: 4}}
+         >
+            {item}
+          </div>
+        ))}
+      </div>
+
+      {/* Drop target */}
+      <div
+        onDragOver={onDragOver}
+        onDrop={onDrop}
+        style={{ height: 200, width: 200, border: "1px solid black"}}
+      >
+        {items.map((item, index) => (
+          <div
+            key={index}
+            style={{ height: 50, width: 50, background: "green", marginBottom: 4}}
+            >
+              {item}
+            </div>
+        ))}
+      </div>
+    </div>
+  );
+}
