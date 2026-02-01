@@ -56,17 +56,18 @@
 
 
 * DEBOUNCING =================
-  - If an event keeps firing rapidly (like typing or scrolling), debouncing waits until the activity stops for X milliseconds before running the function.
+  - If an event keeps firing rapidly (like typing or scrolling), debouncing waits until the activity stops for X milliseconds 
+    before running the function.
   - Example:
         useEffect(() => {
             let timer;
             if (val) {
-              timer = setTimeout(() => {   // here multiple setTimeouts will be stacking up if user types continuously inside our input field
+              timer = setTimeout(() => {   // here multiple setTimeouts will stack up if user types continuously in our input field
                 console.log("Api called...");  
               }, 1000);
             }
             return () => {
-              clearTimeout(timer);  // this cleanup function actually runs at first, to clear all previously stacked setTimeouts, if val changes
+              clearTimeout(timer);  // this cleanup func actually runs at first to clear all previously stacked timeouts, if val changes
             };
           }, [val]);
 
@@ -74,7 +75,9 @@
 
 
 * THROTTLING =================
-  - Throttling is a technique where you make sure a function executes at most once in a given interval, no matter how many times the event is triggered.
+  - Throttling is a technique where you make sure a function executes at most once in a given interval,
+    no matter how many times the event is triggered.
+
   - Example, Button clicks: Prevents users from spamming a button (like "Submit Order") multiple times in quick succession.
 
             function throttle(func, delay) {
@@ -95,7 +98,7 @@
         
           return (
             <div className="App">
-              <button onClick={handleClick}>click</button>  // Even if we click repeatedly, console will be logged only once in every second of clicks.
+              <button onClick={handleClick}>click</button>  // Even if we click repeatedly, console will be logged only once.
             </div>
           );
 
