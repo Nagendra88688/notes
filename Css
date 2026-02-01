@@ -1,0 +1,23 @@
+* Box Model
+  - The CSS Box Model defines how every HTML element is structured and sized on the page.
+  - Every element in the browser is treated as a rectangular box.
+  - That box is made of four layers.
+    +---------------------------+
+    |        Margin             |
+    |  +---------------------+  |
+    |  |      Border         |  |
+    |  |  +---------------+  |  |
+    |  |  |   Padding     |  |  |
+    |  |  | +-----------+ |  |  |
+    |  |  | | Content   | |  |  |
+    |  |  | +-----------+ |  |  |
+    |  |  +---------------+  |  |
+    |  +---------------------+  |
+    +---------------------------+
+
+  - Default behavior (box-sizing: content-box)
+      * Total width(shown in browser) = content width + padding left + padding right + border left + border right
+      This confuses many developers. So mordern apps use  (box-sizing: border-box)
+
+  - In (box-sizing: border-box)
+      * With border-box, the defined width includes padding and border, making layouts predictable.
