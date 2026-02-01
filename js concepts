@@ -1,3 +1,36 @@
+* Hoisting ==============
+  - Hoisting is a JavaScript mechanism where variable and function declarations are allocated memory before code execution.
+  - In hoisting, var stores 'undefined', function stores full function body, and let/const are given memory but can't be 
+    accessed because they are in temporal dead zone (which is the time between a variable is hoisted till it's given a value).
+
+* Closure =============
+  - Closure is a function bound with its lexical scope.
+  - When a function returns a function, it's also returning the lexical scope of it, which is called closure.
+  - Closure is formed when a function retains access to its parent scope even after the parent function has returned.
+  - Example: function outer() {
+                let count = 0;
+              
+                function inner() {
+                  count++;
+                  console.log(count);
+                }
+              
+                return inner;
+              }
+              
+              const counter = outer();
+              
+              counter(); // 1
+              counter(); // 2
+              counter(); // 3
+
+    - Closure is created at function definition, not function execution.
+    - Advantages: Data encapsulation, Data privacy.
+    - Disadvantages: Memory leaks, takes more space because the value is not garbage-collected.
+
+
+
+
 * Deep copy v/s Shallow copy ==============
   - A shallow copy copies only one level of an object.
     👉 If the object has nested objects/arrays, the inner references are shared (not copied).
@@ -65,3 +98,6 @@
               <button onClick={handleClick}>click</button>  // Even if we click repeatedly, console will be logged only once in every second of clicks.
             </div>
           );
+
+
+
