@@ -100,4 +100,43 @@
           );
 
 
+* call, apply, and bind =====================
+  - call, apply, and bind are methods that allow explicit binding of this for function execution.
+  - Example: 
+
+        function greet(city, country) {
+          console.log(this.name, city, country);
+        }
+        
+        const user = { name: "Amit" };
+
+        greet.call(user, "Delhi", "India");         // prints Amit, Delhi, India
+        
+        greet.apply(user, ["Delhi", "India"]);      // prints Amit, Delhi, India
+  
+        const boundFn = greet.bind(user, "Delhi");
+        boundFn("India");                          // prints Amit, Delhi, India
+
+
+
+* Event Loop ==============
+  - The event loop continuously checks whether the call stack is empty and pushes queued callbacks for execution.
+  - Suppose we have a setTimeout containing a callback func. When the timer gets expired, the callback queue stores this 
+    callback func. Then it's the 'Event loop' which puts this callback func inside the call stack(when it's empty).
+
+      ┌──────────────┐
+      │  Call Stack  │
+      └──────────────┘
+              ↑
+      ┌──────────────────┐
+      │ Microtask Queue  │ ← higher priority (promises)
+      └──────────────────┘
+              ↑
+      ┌──────────────────┐
+      │  MacroTask Queue │ ← lower priority (setTimeout, setInterval, events like click or scroll)
+      └──────────────────┘
+
+        
+
+
 
