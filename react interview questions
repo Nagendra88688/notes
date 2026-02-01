@@ -127,3 +127,25 @@
   - When you start the dev server, Vite doesn’t bundle everything. It only serves files on demand — if you open App.jsx, only that file and its dependencies are compiled.
   - Uses esbuild (written in Go) for lightning-fast compilation.
 
+
+* LIFECYCLE METHODS IN CLASS COMPONENTS =======
+      (Mounting phase)
+            - constructor 
+            - static getDerivedStateFromProps
+            - render
+            - componentDidMount
+
+      (Updating phase)
+            - static getDerivedStateFromProps
+            - shouldComponentUpdate
+            - render
+            - getSnapshotBeforeUpdate
+            - componentDidUpdate
+
+      (Unmounting phase)
+            - componentWillUnmount
+
+      (Error handling phase)
+            - static getDerivedStateFromError
+            - componentDidCatch
+
