@@ -102,11 +102,19 @@
         - The response is rendered on Browser.
 
 * How a Webpage Loads in the Browser =====
-      - The browser reads HTML line by line and builds the DOM Tree.
-      - CSS are downloaded and parsed into the CSSOM.
-      - Browser combines DOM + CSSOM → creates the Render Tree, which determines what gets painted on screen.
-      - Browser paints pixels (colors, text, images) and composites layers → final UI is displayed.
-      - Browser downloads and executes JS files. JS can modify DOM (→ causes reflows & repaints).
+                  HTML → DOM
+                  CSS  → CSSOM
+                  DOM + CSSOM → Render Tree
+                  Render Tree → Layout
+                  Layout → Paint
+                  Paint → Composite
+
+      - When the browser receives HTML, it parses it into a DOM tree. (JS is included in parsing)
+      - In parallel, CSS is parsed into a CSSOM tree.
+      - The DOM and CSSOM are combined to form the render tree, which contains only visible elements with their computed styles.
+      - The browser then performs layout to calculate the exact size and position of each element.
+      - After layout, the paint phase draws pixels such as text, colors, borders and images into layers.
+      - Finally, these layers are composited by the GPU to produce the final UI on screen.
 
 * CDN : A CDN is a network of globally distributed servers that cache and deliver content to users from the nearest location. 
         This reduces latency, speeds up page loads, decreases server load, and improves reliability. 
