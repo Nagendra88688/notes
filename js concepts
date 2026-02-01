@@ -136,7 +136,37 @@
       │  MacroTask Queue │ ← lower priority (setTimeout, setInterval, events like click or scroll)
       └──────────────────┘
 
+
+* async/await ===========
+  - async / await is syntactic sugar built on top of Promises. 
+  - async/await make promise based functions to behave as synchronous by pausing the execution.
+  - async function always returns a Promise
+  - await pauses execution of the function — not the call stack.
+  - Example: 
+
+        console.log("A");   
+      
+        async function test() {
+          console.log("B");
         
+          await Promise.resolve();
+        
+          console.log("C");
+        }
+        
+        test();
+      
+        console.log("D");
+
+    Execution timeline:
+      1️⃣ A → sync
+      2️⃣ test() called
+      3️⃣ B printed
+      4️⃣ await encountered → pause function
+      5️⃣ Remaining code scheduled as microtask
+      6️⃣ D printed
+      7️⃣ Microtask runs → C
+
 
 
 
