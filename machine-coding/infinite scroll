@@ -1,4 +1,5 @@
-We are creating a list of 50 elements initially, it will auto-add 50 more elements when user scrolls to the end of the list, causing infinite scroll.
+We are creating a list of 50 elements initially, it will auto-add 50 more elements when user scrolls to the end of the list, 
+causing infinite scroll.
 
 export default function App() {
   const [count, setCount] = useState(50);  // intially 50 items
