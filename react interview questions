@@ -149,3 +149,22 @@
             - static getDerivedStateFromError
             - componentDidCatch
 
+* Reconciliation : It is the process by which React compares the previous Virtual DOM tree with the new one to determine 
+                   the minimal set of changes needed to update the real DOM, using Diffig Algorithm.
+
+
+
+* Context API =============
+      - It helps us to avoid Prop drilling.
+
+      1️⃣ createContext
+            const ThemeContext = React.createContext("light");
+
+      2️⃣ Provide
+            <ThemeContext.Provider value="dark">
+              <App />
+            </ThemeContext.Provider>
+
+      3️⃣ Consume in child
+            const theme = useContext(ThemeContext);
+
