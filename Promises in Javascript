@@ -16,7 +16,30 @@
 
 * Promise.any([p1, p2]) → Resolves when first successful promise resolves; rejects only if all fail.
 
-* Why Promises? => Promises help us to deal with asynchronous code in a far simpler way compared to callbacks. (Callback hell can be avoided by Promises)
+* Why Promises? => Promises help us to deal with asynchronous code in a far simpler way compared to callbacks. 
+                  (Callback hell can be avoided by Promises)
+
+                   Using callbacks->
+                        getUser(id, function (user) {
+                          getOrders(user.id, function (orders) {
+                            getPayment(orders[0].id, function (payment) {        // Callback hell
+                              console.log(payment);
+                            }, handleError);
+                          }, handleError);
+                        }, handleError);
+
+                  Same logic with Promises->
+                       getUser(id)
+                        .then(user => getOrders(user.id))
+                        .then(orders => getPayment(orders[0].id))
+                        .then(payment => {
+                          console.log(payment);
+                        })
+                        .catch(error => {
+                          console.error(error);
+                        });
+
+
 
 * CREATING A PROMISE ==========
         const myPromise = new Promise((resolve, reject) => {
