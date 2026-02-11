@@ -168,3 +168,11 @@
       3️⃣ Consume in child
             const theme = useContext(ThemeContext);
 
+* What is Batching ? 
+      - Batching in React is an optimization where multiple state updates are grouped together
+        and cause only one re-render instead of many.
+      - example, function handleClick() {
+                    setA(1);
+                    setB(2);             // react collect updates -> merge updates -> render once
+                  }
+
