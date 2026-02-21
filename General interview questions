@@ -1,27 +1,7 @@
-* Tell me about Yourself =============
-  - // starting about graduation
-    I graduated in 2022 from NIT Jalandhar. Right after that, I joined Cogoport, where I worked for about 1.5 years as a Frontend Developer. 
-    There, I mainly focused on building scalable React applications and gained solid experience in optimizing web performance 
-    and implementing reusable UI components.
 
-  - // Current company
-    Currently, I’ve been working at Foundit for nearly 2 years as a Frontend Developer. My role involves developing and maintaining user-facing features 
-    in React and Next.js, integrating APIs, managing state with tools like Redux and RTK Query, and ensuring the applications are performant and user-friendly.
-
-  - // Overall experience
-    Across these experiences, I’ve worked on end-to-end frontend development, improving rendering performance, and collaborating closely with backend teams 
-    to deliver scalable solutions.
-
-  - // Current Interest
-    I’m particularly interested in solving complex UI challenges, improving application performance, and building frontend architectures that scale.
-    Now, I’m looking for opportunities where I can take on more ownership, work on impactful products, and continue growing as a frontend engineer.
-
-
-
-
-* What are the Challenges you faced in your work projects ? ======================
-  - Our React dashboard started lagging whenever large datasets (10k+ rows) were rendered in tables. 
-    I optimized it by implementing lazy loading, memoized pure components with React.memo, and used pagination instead of loading all rows at once.
+* Challenges in work projects ? ======================
+  - React dashboard started lagging whenever large datasets (10k+ rows) were rendered in tables. 
+    Optimized it by implementing lazy loading, memoized pure components with React.memo, and used pagination instead of loading all rows at once.
   - Moved complex state management into Redux.
   - In a search feature, every keystroke was triggering an API call, putting unnecessary load on the backend and slowing down the UI. Fixed it using debouncing.
   
