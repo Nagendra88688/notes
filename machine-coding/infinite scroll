@@ -6,7 +6,7 @@ export default function App() {
   let list = []; 
 
   const handleScroll = () => {
-    if ( window.scrollY + window.innerHeight >= window.document.body.offsetHeight ) { // this is main concept where innerHeight is viewport height, and body.offsetHeight is whole height that the body is taking.
+    if ( window.innerHeight + window.scrollY >= window.document.body.offsetHeight ) { // this is main concept where innerHeight is viewport height, and body.offsetHeight is whole height that the body is taking.
       setCount(count + 50);
     }
   };
