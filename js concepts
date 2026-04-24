@@ -46,7 +46,7 @@
           shallow.name = "Sam";        // ✅ Only affects shallow copy
           shallow.address.city = "Goa"; // ❌ Changes original too!
           
-          console.log(original.name);        // "Alex"
+          console.log(original.name);        // "Nagendra"
           console.log(original.address.city); // "Goa" (changed!)
 
     - A deep copy copies the object and all nested objects, so changes in one do not affect the other.
