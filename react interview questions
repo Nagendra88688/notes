@@ -176,3 +176,22 @@
                     setB(2);             // react collect updates -> merge updates -> render once
                   }
 
+
+
+* Concurrent Rendering ============
+      - By this feature, React can pause, interrupt, or restart rendering work to keep the UI responsive.
+      - Before this, Once rendering started → it blocked the main thread until done.
+      - With concurrent rendering, React can break rendering into chunks
+      - Example: User types in input (high priority), Large list is rendering (low priority)
+      - Now React will: Pause list rendering, Update input immediately, Resume list rendering later.
+      - To enable concurrent features, you use createRoot :
+                        import { createRoot } from "react-dom/client";
+                        createRoot(document.getElementById("root")).render(<App />);   👉 This enables the new rendering behavior
+
+      - const [isPending, startTransition] = useTransition();
+            startTransition(() => {
+              setListData(heavyData);   👉 Marks updates as non-urgent
+            });
+
+      - const deferredValue = useDeferredValue(value); 👉 Delays expensive updates
+
