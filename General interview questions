@@ -5,3 +5,9 @@
   - Moved complex state management into Redux.
   - In a search feature, every keystroke was triggering an API call, putting unnecessary load on the backend and slowing down the UI. Fixed it using debouncing.
   
+
+* Cookies → small data sent automatically with every HTTP request
+* LocalStorage → persistent data stored in browser only (no expiry date, manual cleanup)
+* SessionStorage → temporary data stored per tab/session (just like localStorage but tied to only single tab)
+
+
